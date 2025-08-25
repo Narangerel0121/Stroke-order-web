@@ -135,6 +135,7 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import jsPDF from "jspdf";
+import Link from "next/link";
 
 const WorksheetStrokeRow = dynamic(
   () => import("@/_components/WorkSheetStrokeRow"),
@@ -177,15 +178,18 @@ export default function WorksheetPage() {
     <main className="min-h-screen bg-gray-50">
       {/* Controls */}
       <div className="max-w-4xl mx-auto p-6 space-y-4 no-print">
-        <h1 className="text-2xl font-bold">汉字 Writing Practice</h1>
+       <div className="flex justify-between">
+         <h1 className="text-2xl font-bold">汉字 Writing Practice</h1>
+         <Link href="/"><Button className="bg-blue-500 hover:bg-blue-500 cursor-pointer">See stroke order animation</Button></Link>
+       </div>
         <Textarea
           value={spec}
           onChange={(e) => setSpec(e.target.value)}
           placeholder="Жишээ нь: 我:2, 和:3, 汉:1"
         />
         <div className="flex gap-2">
-          <Button onClick={onPrint}>🖨 Print</Button>
-          {/* <Button variant="outline" onClick={onDownloadPDF}>
+          <Button onClick={onPrint} className="cursor-pointer">🖨 Print</Button>
+          {/* <Button variant="outline" onClick={onDownloadPDF} className="cursor-pointer">
             ⬇️ Download PDF
           </Button> */}
         </div>

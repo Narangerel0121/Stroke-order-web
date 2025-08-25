@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import HanziPlayer from "@/_components/HanziPlayer";
+import Link from "next/link";
 
 export default function HomePage() {
   const [text, setText] = useState("");
@@ -20,7 +21,10 @@ export default function HomePage() {
   return (
     <main className="min-h-screen p-6 bg-gray-50">
       <div className="max-w-3xl mx-auto flex flex-col gap-6">
-        <h1 className="text-2xl font-bold">Stroke order</h1>
+       <div className="flex justify-between">
+         <h1 className="text-2xl font-bold">Stroke order animation</h1>
+          <Link href="/sheet"><Button className="bg-blue-500 hover:bg-blue-500 cursor-pointer">Get printable practice sheet</Button></Link>
+       </div>
 
         <div className="flex gap-2">
           <Input
@@ -28,7 +32,7 @@ export default function HomePage() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <Button onClick={handleSearch}>搜索</Button>
+          <Button onClick={handleSearch} className="cursor-pointer">搜索</Button>
         </div>
 
         {chars.length > 0 && (
